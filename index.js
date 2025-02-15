@@ -43,6 +43,7 @@ function SortAll() {
     return;
   }
   while (bank.length > 0) {
+    const number = bank.shift();
     if (number % 2 === 0) {
       evens.push(number);
     }
@@ -65,6 +66,7 @@ function NumberForm() {
       <button type="submit">Add number</button>
       <button type="button" id="sortOne">Sort 1</button>
       <button type="button" id="sortAll">Sort All</button>
+
     `;
   $form.addEventListener("submit", (event) => {
     // this prevents the default form behavior of refreshing the page
@@ -77,25 +79,31 @@ function NumberForm() {
     // Add that number to my state
     addNumber(Number(newNumber));
   });
-  $form.addEventListener("click", SortOne());
-  $form.addEventListener("click", SortAll());
+  //$form.addEventListener("click", SortOne());
+  //$form.addEventListener("click", SortAll());//
 
   return $form;
 }
 // craete a box function for display the `odds` or `evens` numbers
-
+function Box(numbers) {
+  const $box = document.createElement("section");
+  $box.classList.add("box");
+  const boxnumbers = numbers.join(" ");
+  $box.innerHTML =`
+  <span>${boxnumbers}</span>
+  `;
+  return $box;
+}
 // The bank should display all of the numbers that the user has entered.
 
 function BankNumber() {
   const $bank = document.createElement("section");
-  $bank.classList.add("bank");
+  $bank.classList.add("box");
   const bankNumbers = bank.join(" ");
-  $bank.innerHTML =`
+  $bank.innerHTML = `
   <span>${bankNumbers}</span>
-  `
-  ;
+  `;
   return $bank;
-
 }
 
 // create 3 fields with component function including "Bank" "Odds" "Evens" which stored and diplay the state changes
