@@ -125,10 +125,10 @@ function render() {
     </main>
     `;
   $app.querySelector("form").replaceWith(NumberForm());
-  $app.querySelector("#bank").replaceWith(BankNumber());
+  $app.querySelector("#bank").replaceWith(BankNumber(bank));
   $app.querySelector("#odds").replaceWith(Box(odds));
   $app.querySelector("#evens").replaceWith(Box(evens));
-  document.querySelector("#sortOne").addEventListener("click", SortOne());
-  document.querySelector("sortAll").addEventListener("click", SortAll());
+  document.querySelector("#sortOne").addEventListener("click", SortOne);
+  document.querySelector("#sortAll").addEventListener("click", SortAll);
 }
 render();
