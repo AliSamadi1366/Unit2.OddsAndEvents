@@ -58,6 +58,7 @@ function SortAll() {
 //when the user clicks the "Add number" button, the number they entered into the input field, should be added to the number bank.
 function NumberForm() {
   const $form = document.createElement("form");
+  $form.classList.add("form");
   $form.innerHTML = `
       <label>
         Add a number to the bank
@@ -79,8 +80,6 @@ function NumberForm() {
     // Add that number to my state
     addNumber(Number(newNumber));
   });
-  //$form.addEventListener("click", SortOne());
-  //$form.addEventListener("click", SortAll());//
 
   return $form;
 }
@@ -89,7 +88,7 @@ function Box(numbers) {
   const $box = document.createElement("section");
   $box.classList.add("box");
   const boxnumbers = numbers.join(" ");
-  $box.innerHTML =`
+  $box.innerHTML = `
   <span>${boxnumbers}</span>
   `;
   return $box;
@@ -116,7 +115,7 @@ function render() {
     <hr>
     <main>
       <h2>Odds and Events</h2>
-      <NumberForm></NumberForm>
+      <form></form>
       <p>Bank</p>
       <div id="bank"></div>
       <p>Odds</p>
@@ -125,9 +124,11 @@ function render() {
       <div id="evens"></div>
     </main>
     `;
-  $app.querySelector("NumberForm").replaceWith(NumberForm());
+  $app.querySelector("form").replaceWith(NumberForm());
   $app.querySelector("#bank").replaceWith(BankNumber());
   $app.querySelector("#odds").replaceWith(Box(odds));
   $app.querySelector("#evens").replaceWith(Box(evens));
+  document.querySelector("#sortOne").addEventListener("click", SortOne());
+  document.querySelector("sortAll").addEventListener("click", SortAll());
 }
 render();
