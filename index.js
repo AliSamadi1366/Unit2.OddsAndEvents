@@ -20,7 +20,6 @@ function addNumber(n) {
   bank.push(n);
   render();
 }
-
 /**
  * Moves one number from `bank ` to `Odds` or Evens,
  * but only if there is at least one number to move.
@@ -80,6 +79,8 @@ function NumberForm() {
     // Add that number to my state
     addNumber(Number(newNumber));
   });
+  $form.querySelector("#sortOne").addEventListener("click", () => SortOne());
+  $form.querySelector("#sortAll").addEventListener("click", () => SortAll());
 
   return $form;
 }
@@ -117,18 +118,16 @@ function render() {
       <h2>Odds and Events</h2>
       <form></form>
       <p>Bank</p>
-      <div id="bank"></div>
+        <div id="bank"></div>
       <p>Odds</p>
-      <div id="odds"></div>
+        <div id="odds"></div>
       <p>Evens</p>
-      <div id="evens"></div>
+        <div id="evens"></div> 
     </main>
     `;
   $app.querySelector("form").replaceWith(NumberForm());
   $app.querySelector("#bank").replaceWith(BankNumber(bank));
   $app.querySelector("#odds").replaceWith(Box(odds));
   $app.querySelector("#evens").replaceWith(Box(evens));
-  document.querySelector("#sortOne").addEventListener("click", SortOne);
-  document.querySelector("#sortAll").addEventListener("click", SortAll);
 }
 render();
