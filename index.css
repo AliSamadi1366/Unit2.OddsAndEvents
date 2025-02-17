@@ -7,7 +7,7 @@
 #app {
   display: flex;
   flex-direction: column;
-  gap: 4ch;
+  gap: 5ch;
 
   padding: 1rem;
   height: 100vh;
@@ -19,23 +19,27 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 1ch;
+  gap: 2ch;
   background: #c6cac6;
   border-radius: 1rem;
   padding: 1rem;
 }
-.box {
-  min-height: 4vh;
+.boxnum {
+  min-height: 3vh;
   border-radius: 0.25rem;
   background-color: rgb(247, 247, 247);
 }
-main p {
-  margin: none;
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 1ch;
   font-weight: bold;
 }
+
 button {
   border-radius: 0.25rem;
-  min-width: 10vh;
+  min-width: 20vh;
+  font-weight: bold;
 }
 button:hover {
   cursor: pointer;
