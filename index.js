@@ -85,29 +85,28 @@ function NumberForm() {
   return $form;
 }
 // craete a box function for display the `odds` or `evens` numbers
-function Box(numbers) {
+function BoxNumbers() {
   const $box = document.createElement("section");
   $box.classList.add("box");
-  const boxnumbers = numbers.join(" ");
+  const bankNumbers = bank.join(" ");
   $box.innerHTML = `
-  <span>${boxnumbers}</span>
+        <p>
+          <span>Bank</span>
+          <div class="boxnum">${bankNumbers}</div>
+        </p>  
+        <p>
+          <span>Odds</span>
+          <div class="boxnum">${odds}</div>
+        </p>  
+        <p>
+          <span>Evens</span>
+          <div class="boxnum">${evens}</div>
+        </p> 
   `;
   return $box;
 }
-// The bank should display all of the numbers that the user has entered.
-
-function BankNumber() {
-  const $bank = document.createElement("section");
-  $bank.classList.add("box");
-  const bankNumbers = bank.join(" ");
-  $bank.innerHTML = `
-  <span>${bankNumbers}</span>
-  `;
-  return $bank;
-}
-
+// The bank should display all of the numbers that the user has entered
 // create 3 fields with component function including "Bank" "Odds" "Evens" which stored and diplay the state changes
-
 //render the application
 function render() {
   const $app = document.querySelector("#app");
@@ -117,17 +116,10 @@ function render() {
     <main>
       <h2>Odds and Events</h2>
       <form></form>
-      <p>Bank</p>
-        <div id="bank"></div>
-      <p>Odds</p>
-        <div id="odds"></div>
-      <p>Evens</p>
-        <div id="evens"></div> 
+      <BoxNumbers></BoxNumbers>
     </main>
     `;
   $app.querySelector("form").replaceWith(NumberForm());
-  $app.querySelector("#bank").replaceWith(BankNumber(bank));
-  $app.querySelector("#odds").replaceWith(Box(odds));
-  $app.querySelector("#evens").replaceWith(Box(evens));
+  $app.querySelector("BoxNumbers").replaceWith(BoxNumbers(bank));
 }
 render();
